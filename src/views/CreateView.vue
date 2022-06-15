@@ -20,7 +20,7 @@ export default {
         headers: {
           'Accept': 'application/json',
           'Content-Type':'application/json',
-          'Authorization':'Bearer ' + this.getToken()
+          'Authorization':'Bearer ' + this.getCookie("token")
         },
         body: JSON.stringify({
           title: this.title,
@@ -48,12 +48,12 @@ export default {
         }
       }
       return "";
-    },
+    }/* ,
     getToken() {
       let token = this.getCookie("token").split("|");
       token = token[1];
       return token;
-    }
+    } */
   }
 }
 </script>
