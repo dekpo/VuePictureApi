@@ -28,21 +28,33 @@ export default {
       if (status.data.token) {
         const d = new Date();
         d.setTime(d.getTime() + (60 * 60));
-        this.setCookie('token',status.data.token,1);
+        this.setCookie('token', status.data.token, 1);
       }
     },
     setCookie(cname, cvalue, hours) {
       const d = new Date();
-      d.setTime(d.getTime() + (hours* 60 * 60 * 1000));
+      d.setTime(d.getTime() + (hours * 60 * 60 * 1000));
       let expires = "expires=" + d.toUTCString();
       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     },
-    getCookie() {
-      if(document.cookie)alert(document.cookie);
+    getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
     }
   },
   mounted() {
-    this.getCookie();
+    alert(this.getCookie('token'));
   }
 }
 </script>
