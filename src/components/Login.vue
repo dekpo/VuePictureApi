@@ -51,10 +51,18 @@ export default {
         }
       }
       return "";
+    },
+    checkToken(){
+      if( this.getCookie('token') !== "" ){
+      this.$router.push({name:'create'});
+    }
     }
   },
   mounted() {
-    alert(this.getCookie('token'));
+    this.checkToken()
+  },
+  updated(){
+    this.checkToken()
   }
 }
 </script>
