@@ -1,11 +1,78 @@
-<script setup>
-import Login from '@/components/Login.vue'
+<script>
+export default{
+  name:"create-pic",
+  data(){
+    return{
+      title:"",
+      description:"",
+      url:"",
+      author:"",
+      like:"",
+      loading: false
+    }
+  },
+  methods:{
+    addPicture(){
+      alert("Picture added ? Nope. but you have a token " + this.getToken())
+    },
+     getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    },
+    getToken(){
+      let token = this.getCookie("token").split("|");
+      token = token[1];
+      return token;
+    }
+  }
+}
 </script>
 <template>
 <div class="container-fluid">
-  <h1>YOU CAN CREATE A NEW PICTURE !!!</h1>
+  <div class="row">
+<h1>You can add a new Picture !</h1>
+  </div>
+  <form class="row g-3 mb-3" @submit.prevent="addPicture">
+  <div class="col-12">
+    <label for="title" class="form-label">Title</label>
+    <input v-model="title" required type="text" class="form-control" id="title" name="title">
+  </div>
+  <div class="col-12">
+    <label for="url" class="form-label">Url</label>
+    <input v-model="url" required type="text" class="form-control" id="url" name="url">
+  </div>
+  <div class="col-12">
+    <label for="description" class="form-label">Description</label>
+    <textarea v-model="description" required class="form-control" id="description" name="description">
+    </textarea>
+  </div>
+  <div class="col-12">
+    <label for="author" class="form-label">Author</label>
+    <input v-model="author" required type="text" class="form-control" id="author" name="author">
+  </div>
+  <div class="col-12">
+    <label for="like" class="form-label">Like</label>
+    <input v-model="like" required class="form-control" type="text" id="like" name="like">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" :disabled="loading">
+    <span v-show="loading" class="spinner-border spinner-border-sm"></span>
+    Add Picture
+    </button>
+  </div>
+</form>
 </div>
 </template>
-
 <style>
 </style>
