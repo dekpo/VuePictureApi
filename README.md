@@ -21,4 +21,4 @@ npm install
 npm run dev
 ```
 
-Point the API base URL at a running LaravelPictureApi instance.
+Point the API base URL at a running [LaravelPictureApi](https://github.com/dekpo/LaravelPictureApi) instance.
