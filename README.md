@@ -1,29 +1,24 @@
-# my-picsum-clone
+# Vue Picture API (client)
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue 3 SPA for a Picsum-style picture gallery: browse, create, and a small admin screen. Consumes the [LaravelPictureApi](https://github.com/dekpo/LaravelPictureApi) backend.
 
-## Recommended IDE Setup
+| | |
+|---|---|
+| **Source** | https://github.com/dekpo/VuePictureApi |
+| Stack | Vue 3, Vue Router, Vite |
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+## Screens
 
-## Customize configuration
+- `/` — gallery home
+- `/create` — add a picture
+- `/admin` — admin view
+- Login component for the authenticated API
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Setup
 
-## Project Setup
-
-```sh
+```bash
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+Point the API base URL at a running LaravelPictureApi instance.
